@@ -1,0 +1,10 @@
+<%= form_for :user_session, :url => admin_logout_path, :method => :delete do |f| %>
+
+    <%= f.submit "Logout" %>
+  </div>
+
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+    
+    
+<% end %>

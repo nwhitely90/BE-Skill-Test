@@ -1,0 +1,56 @@
+<h1>商品登録</h1>
+
+<%= form_for @product, :url => admin_products_path, :method => :post do |a| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= a.label :amazon_id, "Amazon id" %><br>
+    <%= a.text_field :amazon_id %>
+  </p>
+  
+  <p>
+    <%= a.label :price, "価格" %><br>
+    <%= a.text_field :price %>
+  </p>
+  
+  <p>
+    <%= a.label :image_name, "画像名" %><br>
+    <%= a.text_field :image_name %>
+  </p>
+  
+  <p>
+    <%= a.label :title, "題名" %><br>
+    <%= a.text_field :title %>
+  </p>
+  
+  <p>
+    <%= a.label :description, "説明" %><br>
+    <%= a.text_field :description %>
+  </p>
+  
+  <div>
+    <%= a.radio_button :active, true %>  
+    <%= a.label :active, "アクティブ", :value => true %>
+    
+  </div>
+  <div>
+    <%= a.radio_button :active, false %>  
+    <%= a.label :active, "非アクティブ", :value => false %>
+    
+  </div>  
+  <p>
+    <%= a.submit %>
+  </p>
+
+<% end %>
