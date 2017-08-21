@@ -6,8 +6,7 @@ class Admin::ProductsController < Admin::BaseController
   end
   
   def show
-    @site = Site.find(params[:site_id])
-    @products = Product.find(@site)
+    @product = Product.find(params[:id])
   end
   
   def new
@@ -29,9 +28,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def create
-     @site = current_user
+     @site = Site.find(params[:product][:site_id])
      @product = Product.new(product_params)
-     @product.sire = @site
+     @product.site = @site
     
     if @product.save
     redirect_to admin_product_path(@product)
@@ -45,6 +44,6 @@ class Admin::ProductsController < Admin::BaseController
   
   private
    def product_params
-     params.require(:product).permit(:amazon_id, :price, :image_name, :title, :description)
+     params.require(:product).permit(:amazon_id, :price, :title, :description, :image)
    end
 end

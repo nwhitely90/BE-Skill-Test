@@ -14,6 +14,9 @@
       </ul>
     </div>
   <% end %>
+
+  <%= a.hidden_field :site_id, :value => params[:site_id] %>
+
   <p>
     <%= a.label :amazon_id, "Amazon id" %><br>
     <%= a.text_field :amazon_id %>
@@ -25,8 +28,8 @@
   </p>
   
   <p>
-    <%= a.label :image_name, "画像名" %><br>
-    <%= a.text_field :image_name %>
+    <%= a.label :image %><br>
+    <%= a.file_field :image %>
   </p>
   
   <p>
@@ -41,14 +44,14 @@
   
   <div>
     <%= a.radio_button :active, true %>  
-    <%= a.label :active, "アクティブ", :value => true %>
-    
+    <%= a.label :active, "アクティブ", :value => true %>  
   </div>
+  
   <div>
     <%= a.radio_button :active, false %>  
     <%= a.label :active, "非アクティブ", :value => false %>
-    
-  </div>  
+  </div>
+  
   <p>
     <%= a.submit %>
   </p>

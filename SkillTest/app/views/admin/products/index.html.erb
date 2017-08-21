@@ -10,18 +10,18 @@
     <table>
       <% @products.each do |product| %>
         <tr>
-          <td><%= product.name %></td>
-          <td><%= product.explanation %></td>
-          <td><%= link_to 'Show', admin_product_path(site) %></td>
-          <td><%= link_to 'Edit', edit_admin_product_path(site) %></td>
-          <td><%= link_to 'Delete', admin_product_path(site),
+          <td><%= product.amazon_id %></td>
+          <td><%= product.title %></td>
+          <td><%= link_to 'Show', admin_product_path(product) %></td>
+          <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
+          <td><%= link_to 'Delete', admin_product_path(product),
                   method: :delete,
                   data: { confirm: 'This will delete the article.Are you sure?' } %></td>
         </tr>
       <% end %>
     </table>
       
-    <%= link_to "商品登録",  new_admin_product_url %><br> 
+    <%= link_to "商品登録",  new_admin_product_url(:site_id => @site.id) %><br> 
 
 
 
