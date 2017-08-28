@@ -1,4 +1,27 @@
 /*-------------------------------*/
+/*     Top styles        */
+/*-------------------------------*/
+div#top_image {
+    width: 100%;
+    background-image: url(http://interfacelift.com/wallpaper/D5545b1c/04127_alcazarbathsinsevilla_2560x1600.jpg);
+    height: 400px;
+    background-size: 100%;
+    background-repeat: no-repeat;}
+
+a.navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+}
+
+div#top_explanation {
+    font-family: 'Encode Sans', sans-serif;
+    margin: 1% 4%;
+    font-size: 1.5rem;
+}
+
+
+
+/*-------------------------------*/
 /*     Common styles        */
 /*-------------------------------*/
 
