@@ -1,0 +1,33 @@
+<%= render 'sidebar' %>
+<div id = "main" class= "col-lg-9">
+    <h1>商品</h1>
+    
+
+    <div class="grid">
+      <% @products.each do |product| %>
+        
+        <div class="grid-item">
+            <a href="product_detail/<%= product.id %>">
+              <div><%= image_tag product.image %></div>
+              <div><%= product.title %></div>
+              </a>
+        </div>
+        
+      <% end %>
+        
+    </div>
+
+
+  </div>
+
+
+<script>
+$(document).ready(function() {
+  $('.grid').masonry({
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 200
+  });
+});
+</script>
+

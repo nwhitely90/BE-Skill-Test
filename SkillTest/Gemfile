@@ -57,6 +57,9 @@ group :development do
   
   #For image upload(dependency)
   gem "mini_magick"
+  
+  #For Site Url
+  gem 'friendly_id', '~> 5.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

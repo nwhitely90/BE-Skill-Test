@@ -1,0 +1,2 @@
+module FrontBaseControllerHelper
+end

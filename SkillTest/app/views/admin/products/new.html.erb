@@ -52,6 +52,11 @@
     <%= a.label :active, "非アクティブ", :value => false %>
   </div>
   
+    <div class="field">
+    <%= a.label :tag_list, "タグ（カンマ区切り）" %><br>
+    <%= a.text_field :tag_list %>
+  </div>
+  
   <p>
     <%= a.submit %>
   </p>

@@ -14,7 +14,7 @@ class Admin::SitesController < Admin::BaseController
   end
   
   def show
-    @site = Site.find(params[:id])
+    @site = Site.friendly.find(params[:id])
   end
   
   def update
