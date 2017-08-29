@@ -1,13 +1,13 @@
 <div id = "main" class= "col-lg-12">
-  <h1 class="text-right">紹介の商品</h1>
+  <h1 class="text-right site-heading">Products</h1>
 
-    <div class="gridn">
+    <div class="product_area">
       <% @products.each do |product| %>
         
         <div class="grid-item">
             <a href="product_detail/<%= product.id %>">
               <div><%= image_tag product.image %></div>
-              <div><%= product.title %></div>
+              <div class="product_area_title"><%= product.title %></div>
               </a>
         </div>
         

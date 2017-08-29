@@ -3,6 +3,7 @@
   <head>
     <title>サイトトップ</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -22,20 +23,20 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <%= link_to "Home",  front_site_path,{:class => "nav-link"} %> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
+            <a class="nav-link" href="#">Link</a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
       <div id="top_image">
-          <img href="http://interfacelift.com/wallpaper/D5545b1c/04127_alcazarbathsinsevilla_2560x1600.jpg">ß  
+          <img href="http://interfacelift.com/wallpaper/D5545b1c/04127_alcazarbathsinsevilla_2560x1600.jpg">
       </div >
       <div id="top_explanation">
         <%=  @site.explanation %>
