@@ -10,7 +10,7 @@ class Admin::SitesController < Admin::BaseController
   end
   
   def edit
-    @site = Site.find(params[:id])
+    @site = Site.friendly.find(params[:id])
   end
   
   def show
@@ -44,6 +44,6 @@ class Admin::SitesController < Admin::BaseController
   
   private
     def site_params
-      params.require(:site).permit(:name, :explanation, :active)
+      params.require(:site).permit(:name, :explanation, :site_url, :active)
     end
 end

@@ -4,28 +4,30 @@
     <div class="product_area">
       <% @products.each do |product| %>
         
-        <div class="grid-item">
-            <a href="product_detail/<%= product.id %>">
+        <div class="grid-item">    
+            <%=link_to(front_site_product_detail_path(params[:id],product)) do%>   
               <div><%= image_tag product.image %></div>
               <div class="product_area_title"><%= product.title %></div>
-              </a>
+            <% end %>
         </div>
         
       <% end %>
         
     </div>
 
-
+  
+  
+  <h1 class="text-right site-heading">Tags</h1>
+    <div class="tag_area">
+      <% @tags.each do |tag| %>
+        <div class="grid-item">
+            <%=link_to tag.name, front_site_tag_path(params[:id],tag.name)%>
+        </div>
+      <% end %>   
+    </div>
+  
+    <div class="pagination_area">
+      <%= will_paginate(@products, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    </div>
   </div>
-
-
-<script>
-$(document).ready(function() {
-  $('.grid').masonry({
-    // options
-    itemSelector: '.grid-item',
-    columnWidth: 33
-  });
-});
-</script>
 

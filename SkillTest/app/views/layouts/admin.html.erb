@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>サイトとｐ</title>
+    <title>管理画面</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
       </script>
     <![endif]-->
   </head>
-  <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   admin_home_index_url %></li>
-            <li><%= link_to "Log in", login_path %></li>
-            <li><%= link_to "Log out", admin_logout_path %></li>
-          </ul>
-        </nav>
-      </div>
+  <body class="admin_pages">
+      <header>
+      <nav class="navbar-fixed-top navbar navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">商品管理画面</a>
+          
+          <div class="" id="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              
+            <div class="collapse navbar-collapse" id="navbarNav">  
+              <ul class="navbar-nav">
+                <li class="nav-item"><%= link_to "Home",   admin_home_index_url %></li>
+                <li class="nav-item"><%= link_to "Log out", admin_logout_path %></li>
+              </ul>
+            </div>
+              
+          </div>
+      </nav>
     </header>
     <div class="container">
-      <%= yield %>
+        <div class="row">      
+          <%= yield %>      
+        </div>
     </div>
   </body>
 </html>

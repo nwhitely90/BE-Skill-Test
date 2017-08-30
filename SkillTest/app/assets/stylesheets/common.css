@@ -1,16 +1,29 @@
 /*-------------------------------*/
+/*     Admin styles        */
+/*-------------------------------*/
+div#login-form-area {
+    margin: 40px auto;
+}
+h1.admin_header {
+    margin: 20px 0;
+    width: 100%;
+}
+
+
+
+/*-------------------------------*/
 /*     Top styles        */
 /*-------------------------------*/
 div#top_image {
     width: 100%;
-    background-image: url(http://interfacelift.com/wallpaper/D5545b1c/04127_alcazarbathsinsevilla_2560x1600.jpg);
+    background-image: url(http://interfacelift.com/wallpaper/D46eee70/04127_alcazarbathsinsevilla_2560x1600.jpg);
     height: 50%;
     background-position: center;
     max-width: 100%;
     background-repeat: no-repeat;
 }
 
-a.navbar-brand {
+.front_pages a.navbar-brand {
     font-family: 'Oswald', sans-serif;
     font-size: 2rem;
 }
@@ -80,6 +93,13 @@ html, body, #top_container, #top_row{
     font-size: 3rem;
     text-align: right;
     margin-left: auto;
+}
+.pagination_area {
+    display: flex;
+    margin: 20px auto;
+}
+nav.pagination {
+    margin: 0 auto;
 }
 
 @media (min-width: 992px){

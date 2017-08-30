@@ -1,11 +1,12 @@
+<div id = "main" class= "col-lg-12">
 <h1>商品登録</h1>
 
 <%= form_for @product, :url => admin_products_path, :method => :post do |a| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@product.errors.count, "error") %> prohibited
-        this article from being saved:
+        <%= @product.errors.count %> 
+          エラーで保存出来ませんでした。ご確認ください。
       </h2>
       <ul>
         <% @product.errors.full_messages.each do |msg| %>
@@ -62,3 +63,4 @@
   </p>
 
 <% end %>
+</div>

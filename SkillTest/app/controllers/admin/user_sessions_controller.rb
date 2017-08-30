@@ -1,5 +1,6 @@
 # app/controllers/user_sessions_controller.rb
 class Admin::UserSessionsController < ApplicationController
+layout 'admin'
   
   def new
     @user = User.new

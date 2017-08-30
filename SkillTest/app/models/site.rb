@@ -1,8 +1,14 @@
 class Site < ApplicationRecord
+  belongs_to :user
+  
+  validates :name, presence: true
+  
+  #サイト名で検索出来るよう
   include FriendlyId
   friendly_id :site_url
   
-  belongs_to :user
+  
+  
   after_initialize :set_defaults, unless: :persisted?
 
   def set_defaults

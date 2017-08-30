@@ -6,11 +6,12 @@ class FrontSiteController < FrontBaseController
   end
 
   def show
-    begin
+    #begin
       @site = Site.friendly.find(params[:id])
-      @products = Product.where(site_id: @site.id, active: 1)
-    rescue 
-    end 
+      @products = Product.where(site_id: @site.id, active: 1).paginate(:page => params[:page]).order('id DESC')
+      @tags = Tag.joins("inner join taggings tg on tg.tag_id = tags.id inner join products p on p.id = tg.taggable_id").select("tags.*").where("site_id = ?", @site.id)
+    #rescue 
+    #end 
   end
   
   private 

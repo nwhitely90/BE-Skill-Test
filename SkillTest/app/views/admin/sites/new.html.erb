@@ -1,5 +1,42 @@
-<h1>サイト登録</h1>
+<h1 class="admin_header">サイト登録</h1>
 
 <%= form_for @site, :url => admin_sites_path, :method => :post do |a| %>
-  <%= render 'form' %>
+    <% if @site.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@site.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @site.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= a.label :name %><br>
+    <%= a.text_field :name %>
+  </p>
+  
+  <p>
+    <%= a.label :site_url %><br>
+    <%= a.text_field :site_url %>
+  </p>
+ 
+  <p>
+  <div>
+    <%= a.radio_button :active, true %>  
+    <%= a.label :active, "アクティブ", :value => true %>
+    
+  </div>
+  <div>
+    <%= a.radio_button :active, false %>  
+    <%= a.label :active, "非アクティブ", :value => false %>
+    
+  </div>  
+  <p>
+    <%= a.submit %>
+  </p>
+
 <% end %>

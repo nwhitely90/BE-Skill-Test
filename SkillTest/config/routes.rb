@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'tags/new'
+
+  get 'tags/show'
+
   #ユーザー登録
   resources :users
   namespace :admin do
@@ -10,11 +14,11 @@ Rails.application.routes.draw do
   #ログイン
   get    'login',   to: 'admin/user_sessions#new'
   post   'login',   to: 'admin/user_sessions#create'
-  delete 'admin_logout',  to: 'admin/user_sessions#destroy'
+  get '/admin/logout' => 'admin/user_sessions#destroy', :as => 'admin_logout'
   
   #フロント
   resources :front_site, path: '' do
-    resources :product_detail
+    resources :product_detail, :tags
   end
 
 end

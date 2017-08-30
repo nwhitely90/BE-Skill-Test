@@ -63,6 +63,11 @@ group :development do
   
   #For tag
   gem 'acts-as-taggable-on', '~> 4.0'
+  
+  #For pagination
+  gem 'will_paginate', '~> 3.1.1'
+  gem 'bootstrap-will_paginate'
+  gem 'will_paginate-bootstrap4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
