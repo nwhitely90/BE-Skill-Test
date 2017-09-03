@@ -12,7 +12,7 @@ layout 'admin'
     else
       #flash.now[:alert] = 'ログインが失敗しました'
       #render action: 'new'
-      redirect_back_or_to(admin_home_index_url, notice: 'ログインが失敗しました。')
+      redirect_back_or_to(admin_home_index_url, alert: 'ログインが失敗しました。')
     end
   end
 

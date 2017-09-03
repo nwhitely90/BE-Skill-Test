@@ -3,6 +3,7 @@
 /*-------------------------------*/
 .admin_pages div#login-form-area {
     margin: 40px auto;
+    display: table;
 }
 .admin_pages h1.admin_header {
     margin: 20px 0;
@@ -180,6 +181,14 @@ div#main {
         max-width: 40%;
     }
 }
+/*-------------------------------*/
+/*     Common styles        */
+/*-------------------------------*/
+.mb20 {
+    margin-bottom: 20px;
+}
+
+
 
 
 

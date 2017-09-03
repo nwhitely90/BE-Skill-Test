@@ -10,6 +10,7 @@ class Admin::ProductsController < Admin::BaseController
   def show
     @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
+    check_valid_user; return  if performed?
   end
   
   def new
@@ -19,10 +20,13 @@ class Admin::ProductsController < Admin::BaseController
   def edit
     @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
+    check_valid_user; return  if performed?
   end
 
   def update
    @product = Product.find(params[:id])
+   @site = Site.friendly.find(@product.site_id)
+   check_valid_user; return  if performed?
    
   if @product.update(product_params)
     redirect_to admin_product_path(@product)
@@ -45,6 +49,9 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
       @product = Product.find(params[:id])
+      @site = Site.friendly.find(@product.site_id)
+      check_valid_user; return  if performed?
+    
       if @product.destroy
         redirect_to admin_products_path(:site_id => params[:site_id]),notice: '削除成功しました。'
       else

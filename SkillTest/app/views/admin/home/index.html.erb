@@ -1,5 +1,19 @@
 <h1 class="admin_header">管理画面トップ</h1>
   <div class= "col-lg-12" >
-    <%= link_to "サイト管理",  admin_sites_url, {class:"btn btn-primary"} %><br> 
+      
+  <% if flash[:notice] %>
+    <p id="notice" class="pop_up">
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+   
+  <% if flash[:alert] %>  
+    <p id="alert" class="pop_up">
+      <%= flash[:alert] %>
+    </p>    
+  <% end %>
+    
+    <%= link_to "サイト管理",  admin_sites_url, {class:"btn btn-primary mb20"} %><br> 
+    <%= link_to "ユーザー管理",  edit_admin_user_path(@user.id), {class:"btn btn-primary"} %><br> 
   </div>
 

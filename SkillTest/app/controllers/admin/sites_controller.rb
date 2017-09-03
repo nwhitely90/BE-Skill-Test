@@ -12,19 +12,23 @@ class Admin::SitesController < Admin::BaseController
   
   def edit
     @site = Site.friendly.find(params[:id])
+    check_valid_user; return  if performed?
+    
   end
   
   def show
     @site = Site.friendly.find(params[:id])
+    check_valid_user; return  if performed?
   end
   
   def update
    @site = Site.friendly.find(params[:id])
-
-  if @site.update(site_params)
-    redirect_to admin_site_path(@site)
-  else
-    render 'edit'
+   check_valid_user; return  if performed?
+   
+    if @site.update(site_params)
+      redirect_to admin_site_path(@site)
+    else
+      render 'edit'
     end  
   end
 
@@ -42,6 +46,8 @@ class Admin::SitesController < Admin::BaseController
 
   def destroy
       @site = Site.friendly.find(params[:id])
+      check_valid_user; return  if performed?
+      
       if @site.destroy
         redirect_to admin_sites_path,notice: '削除成功しました。'
       else

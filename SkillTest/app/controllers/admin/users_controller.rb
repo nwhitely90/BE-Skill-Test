@@ -1,10 +1,6 @@
 class Admin::UsersController < Admin::BaseController
-  http_basic_authenticate_with name: "user_add_admin", password: "ay8SHPA0z."
+    skip_before_action :require_login, only: [:new, :create]
 
-  def index
-  end
-
-  
   def show
     @user = User.find(params[:id])
   end
@@ -17,6 +13,11 @@ class Admin::UsersController < Admin::BaseController
   
   def edit
     @user = User.find(params[:id])
+    
+    if @user.id != User.find(session["user_id"]).id
+      redirect_to admin_root_path, alert: 'アクセス拒否'
+    end
+    
   end
 
   
@@ -24,7 +25,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_user_path(@user), notice: 'ユーザー登録出来ました'
+      redirect_to admin_root_path, notice: 'ユーザー登録出来ました'
     else
       render :new
     end
