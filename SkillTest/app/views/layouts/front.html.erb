@@ -13,6 +13,12 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
       </script>
     <![endif]-->
+    <style>
+      /*     Background        */
+      div#top_image {
+          background-image: url(<%= @site.image.url %>);
+      }
+    </style>
   </head>
   <body class="front_pages">
       <header
@@ -22,7 +28,7 @@
     </nav>
   </header>
       <div id="top_image">
-          <img href="http://interfacelift.com/wallpaper/D5545b1c/04127_alcazarbathsinsevilla_2560x1600.jpg">
+          
       </div >
       <div id="top_explanation">
         <%=  @site.explanation %>

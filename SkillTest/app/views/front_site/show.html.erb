@@ -20,9 +20,9 @@
   <h1 class="text-right site-heading">Tags</h1>
     <div class="tag_area">
       <% @tags.each do |tag| %>
-        <div class="grid-item">
-            <%=link_to tag.name, front_site_tag_path(params[:id],tag.name)%>
-        </div>
+
+            <%=link_to tag.name, front_site_tag_path(params[:id],tag.name), { :class=>"grid-item badge badge-pill badge-info" }%>
+
       <% end %>   
     </div>
   

@@ -3,6 +3,8 @@ class Admin::ProductsController < Admin::BaseController
   def index
     @site = Site.find(params[:site_id])
     @products = Product.where(site_id: @site.id)
+                      .paginate(:page => params[:page])
+                      .order('id DESC')
   end
   
   def show
@@ -15,11 +17,12 @@ class Admin::ProductsController < Admin::BaseController
   
   def edit
     @product = Product.find(params[:id])
+    @site = Site.friendly.find(@product.site_id)
   end
 
   def update
    @product = Product.find(params[:id])
-
+   
   if @product.update(product_params)
     redirect_to admin_product_path(@product)
   else
@@ -40,6 +43,12 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def destroy
+      @product = Product.find(params[:id])
+      if @product.destroy
+        redirect_to admin_products_path(:site_id => params[:site_id]),notice: '削除成功しました。'
+      else
+        redirect_to admin_products_path(:site_id => params[:site_id]),alert: '削除失敗しました。'
+      end
   end
   
   private

@@ -2,7 +2,8 @@ class Admin::SitesController < Admin::BaseController
   before_action :require_login
   
   def index
-    @sites = Site.all
+    @user = User.find(session["user_id"])
+    @sites = Site.where(user_id: @user.id)
   end  
   
   def new
@@ -18,7 +19,7 @@ class Admin::SitesController < Admin::BaseController
   end
   
   def update
-   @site = Site.find(params[:id])
+   @site = Site.friendly.find(params[:id])
 
   if @site.update(site_params)
     redirect_to admin_site_path(@site)
@@ -40,10 +41,16 @@ class Admin::SitesController < Admin::BaseController
   end
 
   def destroy
+      @site = Site.friendly.find(params[:id])
+      if @site.destroy
+        redirect_to admin_sites_path,notice: '削除成功しました。'
+      else
+        redirect_to admin_sites_path,alert: '削除失敗しました。'
+      end
   end
   
   private
     def site_params
-      params.require(:site).permit(:name, :explanation, :site_url, :active)
+      params.require(:site).permit(:name, :explanation, :site_url, :active, :image)
     end
 end

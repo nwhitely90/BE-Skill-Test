@@ -1,86 +1,53 @@
 /*-------------------------------*/
 /*     Admin styles        */
 /*-------------------------------*/
-div#login-form-area {
+.admin_pages div#login-form-area {
     margin: 40px auto;
 }
-h1.admin_header {
+.admin_pages h1.admin_header {
     margin: 20px 0;
     width: 100%;
 }
-
-
-
+.admin_pages header a.btn {
+    color: #fff !important;
+}
+.admin_pages p {
+    font-size: 1rem;
+}
+.admin_site_name{
+    font-size: 1.2rem;
+}
+a.btn-primary {
+    color: #ffffff !important;
+}
+a.btn-outline-primary {
+    color: #007bff !important;
+}
+a.btn-outline-primary:hover {
+    color: #ffffff !important;
+}
+a.btn-outline-success {
+    color: #28a745 !important;
+}
+a.btn-outline-success:hover {
+    color: #ffffff !important;
+}
+a.btn-outline-danger {
+    color: #dc3545 !important;
+}
+a.btn-outline-danger:hover {
+    color: #ffffff !important;
+}
+.pop_up{
+    font-size: 1rem;
+    font-weight: 700;  
+}
+#alert {
+    color: red;
+}
 /*-------------------------------*/
 /*     Top styles        */
 /*-------------------------------*/
-div#top_image {
-    width: 100%;
-    background-image: url(http://interfacelift.com/wallpaper/D46eee70/04127_alcazarbathsinsevilla_2560x1600.jpg);
-    height: 50%;
-    background-position: center;
-    max-width: 100%;
-    background-repeat: no-repeat;
-}
-
-.front_pages a.navbar-brand {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
-}
-.product_area{
-    display: inline-block;
-    margin: auto;
-    text-align: justify;
-}
-
-.grid-item {
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.product_area_title{
-    text-align: center;
-}
-
-#top_explanation {
-    margin: 2% 5%;
-    font-size: 1.5rem;
-    font-family: 'Encode Sans', sans-serif;
-}
-div#top_container {
-    font-family: 'Encode Sans', sans-serif;
-}
-h1.text-right.site-heading {
-    color: #29ABA4;
-    font-weight: 700;
-    font-size: 2.5em;
-}
-
-/*-----------PC--------------*/
-@media only screen and (min-device-width: 667px)  {
-    .grid-item {
-        width: 30%;
-    }
-    .grid-item img {
-        width: 100%;
-    }
-}
-
-/*-----------Smartphone--------------*/
-@media only screen and (max-device-width: 667px)  {
-    .grid-item {
-        width: 49%;
-    }
-    .grid-item img {
-        width: 90%;
-        margin: auto;
-        display: block;
-    }
-}
-/*-------------------------------*/
-/*     Common styles        */
-/*-------------------------------*/
-
 html, body, #top_container, #top_row{
     height: 100%;
 }
@@ -101,117 +68,79 @@ html, body, #top_container, #top_row{
 nav.pagination {
     margin: 0 auto;
 }
+div#top_image {
+    width: 100%;
+    height: 50%;
+    background-position: center;
+    max-width: 100%;
+    background-repeat: no-repeat;
+}
+.front_pages a.navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+}
+.product_area{
+    display: inline-block;
+    margin: auto;
+    text-align: justify;
+}
+.grid-item {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.product_area_title{
+    text-align: center;
+}
+#top_explanation {
+    margin: 2% 5%;
+    font-size: 1.5rem;
+    font-family: 'Encode Sans', sans-serif;
+}
+div#top_container {
+    font-family: 'Encode Sans', sans-serif;
+}
+h1.text-right.site-heading {
+    color: #29ABA4;
+    font-weight: 700;
+    font-size: 2.5em;
+}
+a.badge-info {
+    color: #fff !important;
+    background-color: #17a2b8;
+    font-size: 1.1rem;
+}
+.tag_area {
+    text-align: center;
+}
+/*-----------PC--------------*/
+@media only screen and (min-device-width: 667px)  {
+    .grid-item {
+        width: 30%;
+    }
+    .grid-item.badge {
+        width: 22%;
+    }
+    .grid-item img {
+        width: 100%;
+    }
+}
+
+/*-----------Smartphone--------------*/
+@media only screen and (max-device-width: 667px)  {
+    .grid-item {
+        width: 49%;
+    }
+    .grid-item img {
+        width: 90%;
+        margin: auto;
+        display: block;
+    }
+}
 
 @media (min-width: 992px){
     .container {
         max-width: 100% !important;
     }
-}
-/*-------------------------------*/
-/*     Sidebar nav styles        */
-/*-------------------------------*/
-#sidebar {
-    padding-left: 0;
-}
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    position: relative; 
-    line-height: 20px;
-    display: inline-block;
-    width: 100%;
-}
-
-.sidebar-nav li:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    height: 100%;
-    width: 3px;
-    background-color: #1c1c1c;
-    -webkit-transition: width .2s ease-in;
-      -moz-transition:  width .2s ease-in;
-       -ms-transition:  width .2s ease-in;
-            transition: width .2s ease-in;
-
-}
-.sidebar-nav li:first-child a {
-    color: #fff;
-}
-.sidebar-nav li:nth-child(2):before {
-    background-color: #ec1b5a;   
-}
-.sidebar-nav li:nth-child(3):before {
-    background-color: #79aefe;   
-}
-.sidebar-nav li:nth-child(4):before {
-    background-color: #314190;   
-}
-.sidebar-nav li:nth-child(5):before {
-    background-color: #279636;   
-}
-.sidebar-nav li:nth-child(6):before {
-    background-color: #7d5d81;   
-}
-.sidebar-nav li:nth-child(7):before {
-    background-color: #ead24c;   
-}
-.sidebar-nav li:nth-child(8):before {
-    background-color: #2d2366;   
-}
-.sidebar-nav li:nth-child(9):before {
-    background-color: #35acdf;   
-}
-.sidebar-nav li:hover:before,
-.sidebar-nav li.open:hover:before {
-    width: 100%;
-    -webkit-transition: width .2s ease-in;
-      -moz-transition:  width .2s ease-in;
-       -ms-transition:  width .2s ease-in;
-            transition: width .2s ease-in;
-
-}
-
-.sidebar-nav li a {
-    display: block;
-    color: #ddd;
-    text-decoration: none;
-    padding: 10px 15px 10px 30px;    
-}
-
-.sidebar-nav li a:hover,
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus,
-.sidebar-nav li.open a:hover,
-.sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus{
-    color: #fff;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 20px;
-    line-height: 44px;
-}
-.sidebar-nav .dropdown-menu {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    border: none;
-    background-color: #222;
-    box-shadow: none;
 }
 /*-------------------------------*/
 /*     Detail styles        */
@@ -240,7 +169,6 @@ div#main {
 .main_product_area img {
     max-width: 100%;
 }
-
 @media (min-width: 992px){
     .detail_left {
         display: inline-block;

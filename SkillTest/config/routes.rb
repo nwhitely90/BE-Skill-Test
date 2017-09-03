@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'tags/new'
-
-  get 'tags/show'
-
   #ユーザー登録
-  resources :users
   namespace :admin do
     root :to => 'home#index'
     resources :sites, :products, :home, :users, :user_sessions

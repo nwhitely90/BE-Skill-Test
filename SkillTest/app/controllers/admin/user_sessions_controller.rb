@@ -8,17 +8,17 @@ layout 'admin'
 
   def create
     if @user = login(params[:user_session][:email], params[:user_session][:password])
-      redirect_back_or_to(admin_home_index_url, notice: 'ログイン成功しました')
+      redirect_back_or_to(admin_home_index_url)
     else
       #flash.now[:alert] = 'ログインが失敗しました'
       #render action: 'new'
-      redirect_back_or_to(admin_home_index_url, notice: 'ログインが失敗しました')
+      redirect_back_or_to(admin_home_index_url, notice: 'ログインが失敗しました。')
     end
   end
 
   def destroy
     logout
-    redirect_to(admin_home_index_url, notice: 'Logged out!')
+    redirect_to(admin_home_index_url, notice: 'ログアウトしました。')
   end
   
   private

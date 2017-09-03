@@ -7,14 +7,12 @@
   </div>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit "Login" %>
+    <%= f.submit "ログイン" %>
   </div>
 
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert"><%= flash[:alert] %></p>
-    
+    <p id="notice"><%= flash[:notice] %></p>    
     
 <% end %>

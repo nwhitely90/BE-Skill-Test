@@ -2,25 +2,32 @@
   <h1>サイト詳細</h1>
 
   <p>
-    <strong>Name:</strong>
+    <strong>サイト名：</strong>
     <br>
     <%= @site.name %>
   </p>
 
   <p>
-    <strong>Explanation:</strong>
+    <strong>サイト説明：</strong>
     <br>
     <%= @site.explanation %>
   </p>
   
-    <p>
-    <strong>Site Url:</strong>
+  <p>
+    <strong>サイトURL：</strong>
     <br>
-    <%= link_to @site.site_url, front_site_path(@site.site_url) %>
+    <%= link_to @site.site_url, front_site_path(@site.site_url), target: "_blank" %>
+  </p>
+  
+  
+  <p>
+    <strong>サイトトップ画像:</strong>
+    <br>
+    <%= image_tag @site.image, height: "200" %>
   </p>
 
   <p>
-    <strong>Active:</strong>
+    <strong>アクテイブ：</strong>
     <br>
     <% if @site.active == true %>
       有効
@@ -30,8 +37,7 @@
   </p>
 
   <p>
-    <%= link_to "商品一覧へ", admin_products_path(:site_id => @site.id) %>
-
+    <%= link_to "商品一覧へ", admin_products_path(:site_id => @site.id),{class:"btn btn-primary"} %>
   </p>
 
   <%= link_to '編集', edit_admin_site_path(@site) %> |

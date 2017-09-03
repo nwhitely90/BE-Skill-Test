@@ -4,8 +4,8 @@
     <% if @site.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@site.errors.count, "error") %> prohibited
-        this article from being saved:
+        <%= @site.errors.count %>
+        エラーで保存出来ませんでした。ご確認ください。
       </h2>
       <ul>
         <% @site.errors.full_messages.each do |msg| %>
@@ -15,15 +15,24 @@
     </div>
   <% end %>
   <p>
-    <%= a.label :name %><br>
+    <%= a.label :name,"サイト名" %><br>
     <%= a.text_field :name %>
   </p>
   
   <p>
-    <%= a.label :site_url %><br>
+    <%= a.label :site_url,"サイトURL" %><br>
     <%= a.text_field :site_url %>
   </p>
- 
+   <p>
+    <%= a.label :explanation, "サイト説明" %><br>
+    <%= a.text_field :explanation %>
+  </p>
+  
+  <p>
+    <%= a.label :image %><br>
+    <%= a.file_field :image %> 
+  </p>
+  
   <p>
   <div>
     <%= a.radio_button :active, true %>  

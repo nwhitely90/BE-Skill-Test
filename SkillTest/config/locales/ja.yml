@@ -9,6 +9,16 @@ ja:
         image: "画像"
         title: "タイトル"
         description: "商品説明"
+      #ユーザー用
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      #サイト用
+      site:
+        name: "サイト名"
+        explanation: "サイト説明"
+        site_url: "サイトURL"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

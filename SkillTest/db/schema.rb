@@ -10,22 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826031436) do
+ActiveRecord::Schema.define(version: 20170903010206) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "commenter"
-    t.text "body"
-    t.bigint "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170826031436) do
     t.string "image"
     t.text "title"
     t.text "description"
-    t.string "active"
+    t.boolean "active"
     t.string "boolean"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,7 +42,26 @@ ActiveRecord::Schema.define(version: 20170826031436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "site_url"
+    t.string "image"
     t.index ["user_id"], name: "index_sites_on_user_id"
+  end
+
+  create_table "taggings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
+    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id"
+  end
+
+  create_table "tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "taggings_count", default: 0
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,7 +72,6 @@ ActiveRecord::Schema.define(version: 20170826031436) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "articles"
   add_foreign_key "products", "sites"
   add_foreign_key "sites", "users"
 end
