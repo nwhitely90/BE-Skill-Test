@@ -1,51 +1,55 @@
 <div id = "main" class= "col-lg-12">
-<h1>サイト更新</h1>
+  <h1>サイト更新</h1>
 
-<%= form_for @site, url: admin_site_path, method: :put do |a| %>
-  <% if @site.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= @site.errors.count %>
-        エラーで保存出来ませんでした。ご確認ください。
-      </h2>
-      <ul>
-        <% @site.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <strong><%= a.label :name %></strong><br>
-    <%= a.text_field :name %>
-  </p>
+  <%= form_for @site, url: admin_site_path, method: :put do |a| %>
+    <% if @site.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= @site.errors.count %>
+          エラーで保存出来ませんでした。ご確認ください。
+        </h2>
+        <ul>
+          <% @site.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   
-  <p>
-    <strong><%= a.label :explanation, "サイト説明" %></strong><br>
-    <%= a.text_field :explanation %>
-  </p>
- 
-  <p>
-    <strong><%= a.label :image, "サイトトップ画像" %></strong><br>
-    <%= a.file_field :image %> 
-  </p>
-  
-  <p>
-  <div>
-    <%= a.radio_button :active, true %>  
-    <%= a.label :active, "アクティブ", :value => true %>
-  </div>
-  
-  <div>
-    <%= a.radio_button :active, false %>  
-    <%= a.label :active, "非アクティブ", :value => false %>
+    <p>
+      <strong><%= a.label :name %></strong><br>
+      <%= a.text_field :name %>
+    </p>
+
+    <p>
+      <strong><%= a.label :explanation, "サイト説明" %></strong><br>
+      <%= a.text_field :explanation %>
+    </p>
+
+    <p>
+      <strong><%= a.label :image, "サイトトップ画像" %></strong><br>
+      <%= a.file_field :image , {class: "mb20"} %><br>
+
+      (推奨サイズ：2000px X 300px)
+    </p>
+
+    <p>
+      <div>
+        <%= a.radio_button :active, true %>  
+        <%= a.label :active, "アクティブ", :value => true %>
+      </div>
+
+      <div>
+        <%= a.radio_button :active, false %>  
+        <%= a.label :active, "非アクティブ", :value => false %>
+      </div> 
+    </p>
     
-  </div>  
-  <p>
-    <%= a.submit %>
-  </p>
+    <p>
+      <%= a.submit %>
+    </p>
 
-<% end %>
- 
-<%= link_to '戻る', admin_sites_path %>
+  <% end %>
+
+  <%= link_to '戻る', admin_sites_path %>
 </div>
