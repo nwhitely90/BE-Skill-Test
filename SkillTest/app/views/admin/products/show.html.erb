@@ -48,4 +48,4 @@
 
  
 <%= link_to '編集', edit_admin_product_path(@product) %> |
-<%= link_to '戻る', admin_products_path %>
+<%= link_to '戻る', admin_products_path(:site_id => @site.id) %>

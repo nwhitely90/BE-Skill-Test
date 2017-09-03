@@ -19,7 +19,7 @@ class FrontSiteController < FrontBaseController
                   
       @tags = Tag.joins("INNER JOIN taggings tg ON tg.tag_id = tags.id INNER JOIN products p ON p.id = tg.taggable_id")
                   .select("DISTINCT (name), tags.*")
-                  .where("site_id = ?", @site.id)
+                  .where("site_id = ? and taggings_count > 0", @site.id)
     rescue
       record_not_found
     end 

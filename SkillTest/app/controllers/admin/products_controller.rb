@@ -9,6 +9,7 @@ class Admin::ProductsController < Admin::BaseController
   
   def show
     @product = Product.find(params[:id])
+    @site = Site.friendly.find(@product.site_id)
   end
   
   def new

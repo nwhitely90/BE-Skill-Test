@@ -7,6 +7,5 @@ class ProductDetailController < FrontBaseController
     end
     
     @site = Site.find(@product.site_id)
-    #render plain: @site.inspect
   end
 end

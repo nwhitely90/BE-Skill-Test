@@ -173,6 +173,7 @@ div#main {
     .detail_left {
         display: inline-block;
         margin-right: 20px;
+        max-width: 65%;
     }
     .detail_right {
         display: inline-block;
