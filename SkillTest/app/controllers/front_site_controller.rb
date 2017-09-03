@@ -1,12 +1,12 @@
 class FrontSiteController < FrontBaseController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
+  #サイトトップ
   def index
      render :layout => false
   end
 
-  def show
-    
+  def show  
     begin
       @site = Site.friendly.find(params[:id])
       
@@ -22,8 +22,7 @@ class FrontSiteController < FrontBaseController
                   .where("site_id = ? and taggings_count > 0", @site.id)
     rescue
       record_not_found
-    end 
-    
+    end   
   end
   
   private 

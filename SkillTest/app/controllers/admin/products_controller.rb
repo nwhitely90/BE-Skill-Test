@@ -22,6 +22,18 @@ class Admin::ProductsController < Admin::BaseController
     @site = Site.friendly.find(@product.site_id)
     check_valid_user; return  if performed?
   end
+  
+  def create
+     @site = Site.find(params[:product][:site_id])
+     @product = Product.new(product_params)
+     @product.site = @site
+    
+    if @product.save
+    redirect_to admin_product_path(@product)
+    else
+      render 'new'
+    end
+  end
 
   def update
    @product = Product.find(params[:id])
@@ -33,18 +45,6 @@ class Admin::ProductsController < Admin::BaseController
   else
     render 'edit'
     end  
-  end
-
-  def create
-     @site = Site.find(params[:product][:site_id])
-     @product = Product.new(product_params)
-     @product.site = @site
-    
-    if @product.save
-    redirect_to admin_product_path(@product)
-    else
-      render 'new'
-    end
   end
 
   def destroy

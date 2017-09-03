@@ -3,24 +3,18 @@ class Admin::UsersController < Admin::BaseController
 
   def show
     @user = User.find(params[:id])
+    check_user
   end
 
-  
   def new
     @user = User.new
   end
 
-  
   def edit
     @user = User.find(params[:id])
-    
-    if @user.id != User.find(session["user_id"]).id
-      redirect_to admin_root_path, alert: 'アクセス拒否'
-    end
-    
+    check_user
   end
 
-  
   def create
     @user = User.new(user_params)
 
@@ -31,22 +25,26 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  
   def update
     @user = User.find(params[:id])
-      if @user.update(user_params)
-        redirect_to admin_user_path(@user), notice: 'ユーザー編集出来ました'
-      else
-        render :edit
-      end
+    check_user
+    
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user), notice: 'ユーザー編集出来ました'
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    @user = User.find(params[:id])
+    check_user
+    if @user.destroy
+      redirect_to users_url, notice: 'ユーザー削除出来ました'
+    else
+      render :edit
     end
+    
   end
 
   private
@@ -56,5 +54,11 @@ class Admin::UsersController < Admin::BaseController
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+    
+    def check_user
+      if @user.id != User.find(session["user_id"]).id
+        redirect_to admin_root_path, alert: 'アクセス拒否'
+      end
     end
 end

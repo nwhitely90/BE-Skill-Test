@@ -6,6 +6,11 @@ class Admin::SitesController < Admin::BaseController
     @sites = Site.where(user_id: @user.id)
   end  
   
+  def show
+    @site = Site.friendly.find(params[:id])
+    check_valid_user; return  if performed?
+  end
+  
   def new
     @site = Site.new
   end
@@ -16,9 +21,16 @@ class Admin::SitesController < Admin::BaseController
     
   end
   
-  def show
-    @site = Site.friendly.find(params[:id])
-    check_valid_user; return  if performed?
+  def create
+     @user = current_user
+     @site = Site.new(site_params)
+     @site.user = @user
+    
+    if @site.save
+    redirect_to admin_site_path(@site)
+    else
+      render 'new'
+    end
   end
   
   def update
@@ -30,18 +42,6 @@ class Admin::SitesController < Admin::BaseController
     else
       render 'edit'
     end  
-  end
-
-  def create
-     @user = current_user
-     @site = Site.new(site_params)
-     @site.user = @user
-    
-    if @site.save
-    redirect_to admin_site_path(@site)
-    else
-      render 'new'
-    end
   end
 
   def destroy
