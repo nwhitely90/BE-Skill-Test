@@ -1,6 +1,9 @@
 /*-------------------------------*/
 /*     Admin styles        */
 /*-------------------------------*/
+.admin_pages .navbar-brand {
+    font-size: 2rem;
+}
 .admin_pages div#login-form-area {
     margin: 40px auto;
     display: table;
