@@ -7,6 +7,6 @@ class ProductDetailController < FrontBaseController
     end
     
     @site = Site.find(@product.site_id)
-    @related_products = Product.tagged_with(@product.tag_list).where("products.id <> ?", @product.id).limit(5)
+    @related_products = Product.tagged_with(@product.tag_list).where.not(id: @product.id).limit(5)
   end
 end
