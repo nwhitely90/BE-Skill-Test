@@ -1,0 +1,51 @@
+<div id = "main" class= "col-lg-12">
+  <h1>商品詳細</h1>
+  
+  <p>
+    <strong>Amazon ID:</strong>
+    <br>
+    <%= @product.amazon_id %>
+  </p>
+
+  <p>
+    <strong>価格:</strong>
+    <br>
+    <%= @product.price %>円
+  </p>
+
+  <p>
+    <strong>画像:</strong>
+    <br>
+    <%= image_tag @product.image.url, height: "200" %>
+  </p>
+
+  <p>
+    <strong>タイトル:</strong>
+    <br>
+    <%= @product.title %>
+  </p>
+
+  <p>
+    <strong>説明:</strong>
+    <br>
+    <%= @product.description %>
+  </p>
+
+  <p>
+    <strong>タグ:</strong>
+    <br>
+    <%= @product.tag_list %>
+  </p>
+  <p>
+    <strong>アクティブ:</strong>
+    <br>
+    <% if @product.active == true %>
+      有効
+     <% else %>
+      無効
+    <% end %>
+  </p>
+
+ 
+<%= link_to '編集', edit_admin_product_path(@product) %> |
+<%= link_to '戻る', admin_products_path(:site_id => @site.id) %>

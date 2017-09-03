@@ -1,0 +1,47 @@
+<div id = "main" class= "col-lg-12">
+  <h1>サイト詳細</h1>
+
+  <p>
+    <strong>サイト名：</strong>
+    <br>
+    <%= @site.name %>
+  </p>
+
+  <p>
+    <strong>サイト説明：</strong>
+    <br>
+    <%= @site.explanation %>
+  </p>
+  
+  <p>
+    <strong>サイトURL：</strong>
+    <br>
+    <%= link_to @site.site_url, front_site_path(@site.site_url), target: "_blank" %>
+  </p>
+  
+  
+  <p>
+    <strong>サイトトップ画像:</strong>
+    <br>
+    <%= image_tag @site.image, width: "500" %>
+  </p>
+
+  <p>
+    <strong>アクテイブ：</strong>
+    <br>
+    <% if @site.active == true %>
+      有効
+     <% else %>
+      無効
+    <% end %>
+  </p>
+
+  <p>
+    <%= link_to "商品一覧へ", admin_products_path(:site_id => @site.id),{class:"btn btn-primary"} %>
+  </p>
+
+  <%= link_to '編集', edit_admin_site_path(@site) %> |
+  <%= link_to '戻る', admin_sites_path %>
+
+</div>  
+

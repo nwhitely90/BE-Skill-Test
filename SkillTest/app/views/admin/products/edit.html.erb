@@ -1,0 +1,65 @@
+<div id = "main" class= "col-lg-12">
+<h1>商品更新</h1>
+
+<%= form_for @product, url: admin_product_path, method: :put do |a| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= @product.errors.count %>
+        エラーで保存出来ませんでした。ご確認ください。
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+ <p>
+    <%= a.label :amazon_id, "Amazon id" %><br>
+    <%= a.text_field :amazon_id %>
+  </p>
+  
+  <p>
+    <%= a.label :price, "価格" %><br>
+    <%= a.text_field :price %>
+  </p>
+  
+  <p>
+    <%= a.label :image %><br>
+    <%= a.file_field :image %>
+  </p>
+  
+  <p>
+    <%= a.label :title, "題名" %><br>
+    <%= a.text_field :title %>
+  </p>
+  
+  <p>
+    <%= a.label :description, "説明" %><br>
+    <%= a.text_field :description %>
+  </p>
+  
+  <div>
+    <%= a.radio_button :active, true %>  
+    <%= a.label :active, "アクティブ", :value => true %>  
+  </div>
+  
+  <div>
+    <%= a.radio_button :active, false %>  
+    <%= a.label :active, "非アクティブ", :value => false %>
+  </div>
+  
+    <div class="field">
+    <%= a.label :tag_list, "タグ（カンマ区切り）" %><br>
+    <%= a.text_field(:tag_list, value: @product.tag_list.join(",")) %>
+  </div>
+  <p>
+    <%= a.submit %>
+  </p>
+
+<% end %>
+ 
+<%= link_to '戻る', admin_product_path(@product) %>
+</div>

@@ -1,0 +1,2 @@
+module ProductDetailControllerHelper
+end

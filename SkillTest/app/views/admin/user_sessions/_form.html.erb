@@ -1,0 +1,27 @@
+<%= form_for :user_session, url: admin_user_sessions_path do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "ログイン" %>
+  </div>
+
+  <% if flash[:notice] %>
+    <p id="notice" class="pop_up">
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+   
+  <% if flash[:alert] %>  
+    <p id="alert" class="pop_up">
+      <%= flash[:alert] %>
+    </p>    
+  <% end %>
+    
+<% end %>
