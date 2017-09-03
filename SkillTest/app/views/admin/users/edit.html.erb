@@ -1,0 +1,6 @@
+<h1>ユーザー編集</h1>
+
+<%= render 'edit_form', user: @user %>
+
+<%= link_to '詳細', admin_user_path(@user) %> |
+<%= link_to '戻る', admin_root_path %>

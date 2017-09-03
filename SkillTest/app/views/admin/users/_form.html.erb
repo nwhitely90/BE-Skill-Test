@@ -1,0 +1,34 @@
+<%= form_for :user, url: admin_users_path do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= @user.errors.count %>
+        エラーで保存出来ませんでした。ご確認ください。
+      </h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email, 'メールアドレス' %><br />
+    <%= form.text_field :email, id: :user_email %>
+  </div>
+
+<div class="field">
+   <%= form.label :password,'パスワード' %><br />
+   <%= form.password_field :password %>
+</div>
+<div class="field">
+   <%= form.label :password_confirmation,'パスワード確認' %><br />
+   <%= form.password_field :password_confirmation %>
+</div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

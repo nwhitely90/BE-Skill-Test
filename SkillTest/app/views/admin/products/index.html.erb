@@ -1,0 +1,39 @@
+<div id = "main" class= "col-lg-12">
+  <h1>商品管理</h1>
+
+  <% if flash[:notice] %>
+    <p id="notice" class="pop_up">
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+   
+  <% if flash[:alert] %>  
+    <p id="alert" class="pop_up">
+      <%= flash[:alert] %>
+    </p>    
+  <% end %>
+  <table>
+    <% @products.each do |product| %>
+      <tr>
+        <td class="admin_site_name"><%= product.amazon_id %></td>
+        <td class="admin_site_name"><%= product.title %></td>
+        <td><%= link_to '詳細', admin_product_path(product), {class:"btn btn-outline-primary"} %></td>
+        <td><%= link_to '編集', edit_admin_product_path(product), {class:"btn btn-outline-success"} %></td>
+        <td><%= link_to '削除', admin_product_path(product, :site_id => @site.id),
+                method: :delete,
+                data: { confirm: '商品を削除してもよろしいでしょうか？' },
+                class:"btn btn-outline-danger" %> </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to "商品登録",  new_admin_product_url(:site_id => @site.id),{class:"btn btn-primary"} %><br> 
+  
+  
+  <div class="pagination_area">
+    <%= will_paginate(@products, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+  </div>
+
+
+
+</div> 
