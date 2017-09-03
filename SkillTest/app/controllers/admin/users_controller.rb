@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
 
   def show
     @user = User.find(params[:id])
-    check_user
+    check_user; return  if performed?
   end
 
   def new
@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::BaseController
 
   def edit
     @user = User.find(params[:id])
-    check_user
+    check_user; return  if performed?
   end
 
   def create
@@ -27,10 +27,10 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     @user = User.find(params[:id])
-    check_user
+    check_user; return  if performed?
     
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: 'ユーザー編集出来ました'
+        redirect_to admin_user_path(@user), notice: 'ユーザー編集出来ました'
     else
       render :edit
     end
@@ -38,9 +38,9 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user = User.find(params[:id])
-    check_user
+    check_user; return  if performed?
     if @user.destroy
-      redirect_to users_url, notice: 'ユーザー削除出来ました'
+      redirect_to admin_logout_path
     else
       render :edit
     end

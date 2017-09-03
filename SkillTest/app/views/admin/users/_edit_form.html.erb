@@ -32,3 +32,10 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to '削除', admin_user_path(@user),
+                method: :delete,
+                data: { confirm: 'ユーザーを削除してもよろしいでしょうか？' },
+                class:"btn btn-outline-danger" %>
+
+<br>
