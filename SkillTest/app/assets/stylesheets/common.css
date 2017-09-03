@@ -183,6 +183,9 @@ div#main {
         display: inline-block;
         max-width: 40%;
     }
+    .related_product_area .grid-item {
+        width: 15%;
+    }
 }
 /*-------------------------------*/
 /*     Common styles        */
