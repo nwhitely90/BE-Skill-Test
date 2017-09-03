@@ -7,5 +7,6 @@ class ProductDetailController < FrontBaseController
     end
     
     @site = Site.find(@product.site_id)
+    @related_products = Product.tagged_with(@product.tag_list).limit(5)
   end
 end

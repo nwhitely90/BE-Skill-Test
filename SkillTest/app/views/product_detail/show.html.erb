@@ -25,10 +25,22 @@
          <br>
          <span id="description_span"><%= @product.description %></span>
        </p>  
-      </div
-    </div>
-  
- 
+      </div>
+        
+      <h1 class="text-right site-heading">Related products</h1>
+      
+      <div class="related_product_area">
+        <% @related_products.each do |product| %>
 
+          <div class="grid-item">    
+              <%=link_to(front_site_product_detail_path(params[:front_site_id],product)) do%>   
+                <div><%= image_tag product.image %></div>
+                <div class="product_area_title"><%= product.title %></div>
+              <% end %>
+          </div>
+
+        <% end %>
+      </div>
+      
   </div>
 </div>

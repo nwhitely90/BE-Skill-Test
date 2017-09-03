@@ -46,7 +46,7 @@ gem 'jbuilder', '~> 2.5'
   gem 'friendly_id', '~> 5.1.0'
   
   #For tag
-  gem 'acts-as-taggable-on', '~> 4.0'
+  gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master'
   
   #For pagination
   gem 'will_paginate', '~> 3.1.1'
