@@ -1,6 +1,12 @@
 # Skill Test
 こちらはスキルテスト用のサンプルサイトです。
 
+###インストール
+下記のコマンドを実行してください。
+
+rails generate sorcery:install
+rake acts_as_taggable_on_engine:install:migrations
+
 ### 使い方について
 下記のフローでサイトの動作を確認できます。
 
