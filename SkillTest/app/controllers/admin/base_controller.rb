@@ -8,8 +8,8 @@ class Admin::BaseController < ApplicationController
     end
     
     #対象のユーザーのみサイトを管理出来る様に
-    def check_valid_user
-      if @site.user_id != User.find(session["user_id"]).id
+    def check_valid_user(site)
+      if site.user_id !=  current_user.id
         redirect_to admin_sites_path, alert: 'アクセス拒否'
         return
       end

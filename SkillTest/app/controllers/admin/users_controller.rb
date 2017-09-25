@@ -1,9 +1,8 @@
 class Admin::UsersController < Admin::BaseController
-    skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
+  before_action :get_user, only: [:show,:edit,:update,:destroy]
 
   def show
-    @user = User.find(params[:id])
-    check_user; return  if performed?
   end
 
   def new
@@ -11,8 +10,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def edit
-    @user = User.find(params[:id])
-    check_user; return  if performed?
   end
 
   def create
@@ -26,9 +23,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    @user = User.find(params[:id])
-    check_user; return  if performed?
-    
     if @user.update(user_params)
         redirect_to admin_user_path(@user), notice: 'ユーザー編集出来ました'
     else
@@ -37,8 +31,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    check_user; return  if performed?
+    check_user
+      return  if performed?
     if @user.destroy
       redirect_to admin_logout_path
     else
@@ -48,16 +42,16 @@ class Admin::UsersController < Admin::BaseController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
+    def get_user
+      @user = current_user
     end
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
     
-    def check_user
-      if @user.id != User.find(session["user_id"]).id
+    def check_user(user)
+      if user.id != User.find(session["user_id"]).id
         redirect_to admin_root_path, alert: 'アクセス拒否'
       end
     end

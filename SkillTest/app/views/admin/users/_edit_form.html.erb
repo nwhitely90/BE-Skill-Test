@@ -1,5 +1,5 @@
 <%= form_for :user, url: admin_user_path, method: :patch do |form| %>
-  <% if user.errors.any? %>
+  <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= @user.errors.count %>
@@ -33,7 +33,7 @@
   </div>
 <% end %>
 
-<%= link_to '削除', admin_user_path(@user),
+<%= link_to '削除', admin_user_path,
                 method: :delete,
                 data: { confirm: 'ユーザーを削除してもよろしいでしょうか？' },
                 class:"btn btn-outline-danger" %>

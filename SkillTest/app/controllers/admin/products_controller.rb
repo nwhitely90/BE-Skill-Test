@@ -1,16 +1,17 @@
 class Admin::ProductsController < Admin::BaseController
+  before_action :get_product, only: [:show, :edit,:update,:destroy]
   
   def index
     @site = Site.find(params[:site_id])
     @products = Product.where(site_id: @site.id)
                       .paginate(:page => params[:page])
-                      .order('id DESC')
+                      .order_id_desc
   end
   
   def show
-    @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
-    check_valid_user; return  if performed?
+    check_valid_user(@site)
+      return  if performed?
   end
   
   def new
@@ -18,9 +19,9 @@ class Admin::ProductsController < Admin::BaseController
   end
   
   def edit
-    @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
-    check_valid_user; return  if performed?
+    check_valid_user(@site)
+      return  if performed?
   end
   
   def create
@@ -36,9 +37,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-   @product = Product.find(params[:id])
    @site = Site.friendly.find(@product.site_id)
-   check_valid_user; return  if performed?
+   check_valid_user(@site)
+    return  if performed?
    
   if @product.update(product_params)
     redirect_to admin_product_path(@product)
@@ -48,9 +49,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def destroy
-      @product = Product.find(params[:id])
       @site = Site.friendly.find(@product.site_id)
-      check_valid_user; return  if performed?
+      check_valid_user(@site)
+        return  if performed?
     
       if @product.destroy
         redirect_to admin_products_path(:site_id => params[:site_id]),notice: '削除成功しました。'
@@ -63,4 +64,8 @@ class Admin::ProductsController < Admin::BaseController
    def product_params
      params.require(:product).permit(:amazon_id, :price, :title, :description, :image, :tag_list)
    end
+   
+  def get_product
+    @product = Product.find(params[:id])
+  end
 end

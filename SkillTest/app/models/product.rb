@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   acts_as_taggable_on :tags
   
   #Pager用 - ページごとの数
-  self.per_page = 20 
+  self.per_page = 20
 
   def set_defaults
     self.active = true if self.active.nil?
