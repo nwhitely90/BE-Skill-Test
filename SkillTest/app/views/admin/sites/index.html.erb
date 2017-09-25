@@ -14,7 +14,7 @@
   <% end %>
     
   <table>
-    <% @sites.each do |site| %>
+    <% @user.sites.each do |site| %>
       <tr>
         <td class="admin_site_name"><%= site.name %></td>
         <td><%= link_to '詳細', admin_site_path(site), {class:"btn btn-outline-primary"} %></td>
@@ -27,6 +27,6 @@
     <% end %>
   </table>
 
-  <%= link_to "サイト登録",  new_admin_site_url,{class:"btn btn-primary"} %><br> 
+  <%= link_to "サイト登録",  new_admin_site_path,{class:"btn btn-primary"} %><br> 
 
 </div> 

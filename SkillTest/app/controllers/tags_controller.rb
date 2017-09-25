@@ -1,15 +1,15 @@
 class TagsController < FrontBaseController
+  before_action :get_site
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
-  def show
-    @site = Site.friendly.find(params[:front_site_id])
-    
+  def show  
     if Tag.friendly.exists?(params[:id])
       @tag = Tag.friendly.find(params[:id]) 
-      @products = Product.joins("inner join taggings tg on products.id = tg.taggable_id inner join tags t on t.id = tg.tag_id")
-                          .where("site_id = ? and active = ? and name= ?" , @site.id, 1,@tag.name)
+      @products = Product.joins("inner join taggings tg on products.id = tg.taggable_id inner join tags on tags.id = tg.tag_id")
+                          .where(site_id: @site.id).where(tags: {name: @tag.name})
                           .paginate(:page => params[:page])
-                          .order('id DESC')
+                          .active
+                          .order_id_desc
       if @products.blank?
         flash[:alert] = "対象の商品が存在しません。"
       end

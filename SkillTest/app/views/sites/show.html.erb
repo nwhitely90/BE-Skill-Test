@@ -5,7 +5,7 @@
       <% @products.each do |product| %>
         
         <div class="grid-item">    
-            <%=link_to(front_site_product_detail_path(params[:id],product)) do%>   
+            <%=link_to(site_product_path(params[:id],product)) do%>   
               <div><%= image_tag product.image %></div>
               <div class="product_area_title"><%= product.title %></div>
             <% end %>
@@ -21,7 +21,7 @@
     <div class="tag_area">
       <% @tags.each do |tag| %>
 
-            <%=link_to tag.name, front_site_tag_path(params[:id],tag.name), { :class=>"grid-item badge badge-pill badge-info" }%>
+            <%=link_to tag.name, site_tag_path(params[:id],tag.name), { :class=>"grid-item badge badge-pill badge-info" }%>
 
       <% end %>   
     </div>

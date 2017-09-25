@@ -4,13 +4,14 @@ class Admin::ProductsController < Admin::BaseController
     @site = Site.find(params[:site_id])
     @products = Product.where(site_id: @site.id)
                       .paginate(:page => params[:page])
-                      .order('id DESC')
+                      .order_id_desc
   end
   
   def show
     @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
-    check_valid_user; return  if performed?
+    check_valid_user(@site)
+      return  if performed?
   end
   
   def new
@@ -20,7 +21,8 @@ class Admin::ProductsController < Admin::BaseController
   def edit
     @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
-    check_valid_user; return  if performed?
+    check_valid_user(@site)
+      return  if performed?
   end
   
   def create
@@ -38,7 +40,8 @@ class Admin::ProductsController < Admin::BaseController
   def update
    @product = Product.find(params[:id])
    @site = Site.friendly.find(@product.site_id)
-   check_valid_user; return  if performed?
+   check_valid_user(@site)
+    return  if performed?
    
   if @product.update(product_params)
     redirect_to admin_product_path(@product)
@@ -50,7 +53,8 @@ class Admin::ProductsController < Admin::BaseController
   def destroy
       @product = Product.find(params[:id])
       @site = Site.friendly.find(@product.site_id)
-      check_valid_user; return  if performed?
+      check_valid_user(@site)
+        return  if performed?
     
       if @product.destroy
         redirect_to admin_products_path(:site_id => params[:site_id]),notice: '削除成功しました。'

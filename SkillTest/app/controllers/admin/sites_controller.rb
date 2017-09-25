@@ -1,24 +1,25 @@
 class Admin::SitesController < Admin::BaseController
   before_action :require_login
+  before_action :get_site, only: [:edit,:update,:destroy]
+  before_action only: [:edit,:update,:destroy]do
+    check_valid_user(@site)
+  end
   
   def index
-    @user = User.find(session["user_id"])
-    @sites = Site.where(user_id: @user.id)
+    @user = current_user
   end  
   
   def show
+    @user = current_user
     @site = Site.friendly.find(params[:id])
-    check_valid_user; return  if performed?
+
   end
   
   def new
     @site = Site.new
   end
   
-  def edit
-    @site = Site.friendly.find(params[:id])
-    check_valid_user; return  if performed?
-    
+  def edit  
   end
   
   def create
@@ -33,10 +34,7 @@ class Admin::SitesController < Admin::BaseController
     end
   end
   
-  def update
-   @site = Site.friendly.find(params[:id])
-   check_valid_user; return  if performed?
-   
+  def update   
     if @site.update(site_params)
       redirect_to admin_site_path(@site)
     else
@@ -44,10 +42,7 @@ class Admin::SitesController < Admin::BaseController
     end  
   end
 
-  def destroy
-      @site = Site.friendly.find(params[:id])
-      check_valid_user; return  if performed?
-      
+  def destroy     
       if @site.destroy
         redirect_to admin_sites_path,notice: '削除成功しました。'
       else

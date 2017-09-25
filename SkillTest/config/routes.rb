@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #ユーザー登録
   namespace :admin do
     root :to => 'home#index'
-    resources :users,:except => [:index]
+    resource :user,:except => [:index]
     resources :home, :only => [:index]
     resources :user_sessions, :only => [:new, :create, :destroy]
     resources :sites, :products
@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get '/admin/logout' => 'admin/user_sessions#destroy', :as => 'admin_logout'
   
   #フロント
-  resources :front_site, path: '', :only => [:index, :show] do
-    resources :product_detail, :only => [:show]
+  resources :sites, path: '', :only => [:index, :show] do
+    resources :products, :only => [:show]
     resources :tags, :only => [:show]
   end
 

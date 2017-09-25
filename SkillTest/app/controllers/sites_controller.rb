@@ -1,4 +1,4 @@
-class FrontSiteController < FrontBaseController
+class SitesController < FrontBaseController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
   #サイトトップ
@@ -15,11 +15,16 @@ class FrontSiteController < FrontBaseController
     end
       @products = Product.where(site_id: @site.id, active: 1)
                   .paginate(:page => params[:page])
-                  .order('id DESC')
+                  .order_id_desc
                   
-      @tags = Tag.joins("INNER JOIN taggings tg ON tg.tag_id = tags.id INNER JOIN products p ON p.id = tg.taggable_id")
-                  .select("DISTINCT (name), tags.*")
-                  .where("site_id = ? and taggings_count > 0", @site.id)
+      @tags = Tag.joins(:taggings, "INNER JOIN products ON products.id = taggings.taggable_id")
+                  .select(:name)
+                  .distinct
+                  .where(:products => {site_id: @site.id})
+                  .active_taggings
+                  
+              #joins("INNER JOIN taggings tg ON tg.tag_id = tags.id INNER JOIN products p ON p.id = tg.taggable_id")
+                  
     rescue
       record_not_found
     end   
