@@ -1,4 +1,5 @@
 class Admin::ProductsController < Admin::BaseController
+  before_action :get_product, only: [:show, :edit,:update,:destroy]
   
   def index
     @site = Site.find(params[:site_id])
@@ -8,7 +9,6 @@ class Admin::ProductsController < Admin::BaseController
   end
   
   def show
-    @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
     check_valid_user(@site)
       return  if performed?
@@ -19,7 +19,6 @@ class Admin::ProductsController < Admin::BaseController
   end
   
   def edit
-    @product = Product.find(params[:id])
     @site = Site.friendly.find(@product.site_id)
     check_valid_user(@site)
       return  if performed?
@@ -38,7 +37,6 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-   @product = Product.find(params[:id])
    @site = Site.friendly.find(@product.site_id)
    check_valid_user(@site)
     return  if performed?
@@ -51,7 +49,6 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def destroy
-      @product = Product.find(params[:id])
       @site = Site.friendly.find(@product.site_id)
       check_valid_user(@site)
         return  if performed?
@@ -67,4 +64,8 @@ class Admin::ProductsController < Admin::BaseController
    def product_params
      params.require(:product).permit(:amazon_id, :price, :title, :description, :image, :tag_list)
    end
+   
+  def get_product
+    @product = Product.find(params[:id])
+  end
 end
