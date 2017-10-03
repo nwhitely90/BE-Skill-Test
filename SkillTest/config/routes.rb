@@ -14,10 +14,15 @@ Rails.application.routes.draw do
   post   'login',   to: 'admin/user_sessions#create'
   get '/admin/logout' => 'admin/user_sessions#destroy', :as => 'admin_logout'
   
+  
+  concern :taggables do
+    resources :tags, only: [:index]
+  end
+  
   #フロント
-  resources :sites, path: '', :only => [:index, :show] do
-    resources :products, :only => [:show]
-    resources :tags, :only => [:show]
+  resources :sites, path: '', only: [:index, :show] do
+    resources :products, concerns: :taggables, only: [:show]
+    resources :tags, only: [:show]
   end
   
   #エラーハンドリング
