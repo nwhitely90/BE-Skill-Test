@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     resources :products, :only => [:show]
     resources :tags, :only => [:show]
   end
+  
+  #エラーハンドリング
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
 
 end
