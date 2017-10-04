@@ -1,0 +1,11 @@
+<div id = "main" class= "col-lg-12">
+  <% if @product.tags %>   
+  <h1 class="text-right site-heading"><%= @product.title %> Tags</h1>
+    <div class="tag_area">
+      <% @product.tags.each do |tag| %>
+        <%=link_to tag.name, site_tag_path(params[:site_id],tag.name), { :class=>"grid-item badge badge-pill badge-info" }%>
+      <% end %>   
+    </div>     
+  <% end %>   
+</div>
+

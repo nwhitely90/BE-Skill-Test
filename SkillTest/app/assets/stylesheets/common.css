@@ -194,6 +194,15 @@ div#main {
     margin-bottom: 20px;
 }
 
+.error-container {
+  padding-top: 5rem;
+}
+.error-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+
 
 
 

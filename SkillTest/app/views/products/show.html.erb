@@ -24,7 +24,12 @@
          <strong>説明:</strong>
          <br>
          <span id="description_span"><%= @product.description %></span>
-       </p>  
+       </p>
+       <p>
+         <strong>タグ:</strong>
+         <br>
+         <%= link_to 'この商品のタグ一覧へ', site_product_tags_path(product_id: @product.id) %>
+       </p>
       </div>
 
       

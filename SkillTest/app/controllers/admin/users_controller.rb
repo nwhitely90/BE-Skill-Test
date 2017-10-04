@@ -51,7 +51,7 @@ class Admin::UsersController < Admin::BaseController
     end
     
     def check_user(user)
-      if user.id != User.find(session["user_id"]).id
+      if user.id != current_user.id
         redirect_to admin_root_path, alert: 'アクセス拒否'
       end
     end

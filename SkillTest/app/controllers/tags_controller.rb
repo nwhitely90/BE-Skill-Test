@@ -2,6 +2,10 @@ class TagsController < FrontBaseController
   before_action :get_site
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
+  def index
+    @product = Product.find(params[:product_id])
+  end
+  
   def show  
     if Tag.friendly.exists?(params[:id])
       @tag = Tag.friendly.find(params[:id]) 
