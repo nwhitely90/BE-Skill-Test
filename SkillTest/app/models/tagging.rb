@@ -1,3 +1,4 @@
 class Tagging < ApplicationRecord
-  has_one :product, inverse_of: :taggings
+  belongs_to :product,
+  foreign_key: "taggable_id"
 end
