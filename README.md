@@ -1,5 +1,4 @@
-# Skill Test
-こちらはスキルテスト用のサンプルサイトです。
+# Simple product display system test
 
 ### 使い方について
 下記のフローでサイトの動作を確認できます。
